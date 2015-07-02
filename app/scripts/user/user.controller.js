@@ -2,7 +2,7 @@
   
   'use strict';
 
-  angular.module('UserModule', ['ui.router', 'ngCookies'])
+  angular.module('UserModule')
 
   .controller('UserCtrl', ['$scope', 'UserFactory', '$location', 
 
