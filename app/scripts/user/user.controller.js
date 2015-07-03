@@ -38,6 +38,16 @@
       }
     });
 
+   // .directive('logIn', [ function () {
+   //   return {
+   //     restrict: 'EA',
+
+   //     templateUrl: 'scripts/user/login.tpl.html' 
+
+   //       };
+
+   // }]);
+   
 
 
 }());
