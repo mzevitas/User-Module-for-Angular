@@ -33,7 +33,22 @@
 		     
 		      
 
-		    });
+		    })
+
+		 .run([ '$rootScope', 'UserFactory', 'PARSE',
+
+			    function ($rootScope, UserFactory, PARSE) {
+
+			      $rootScope.$on('$routeChangeStart', function () {
+			        
+			        // Run my Login Status
+			        UserFactory.status();
+
+		 });
+    
+   }
+
+  ])
 
 
 }());
