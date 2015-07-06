@@ -4,27 +4,30 @@
 
   angular.module('UserModule', [])
 
-  .factory('UserFactory', ['$http', 'PARSE', '$cookieStore', '$location',
+  .factory('UserFactory', ['$http', 'PARSE', '$cookies', '$location',
 
-    function ($http, PARSE, $cookieStore, $location) {
+    function ($http, PARSE, $cookies, $location) {
     
       // Get Current User
-      var currentUser = function () {
-        return $cookieStore.get('currentUser');
+      var currentUser = function (data) {
+         $cookies.put('sessionToken', data.sessionToken);
+          $cookies.put('userObjectId', data.objectId);
       };
 
       // Check User Status
       var checkLoginStatus = function () {
         var user = currentUser();
-        if (user) {
-          PARSE.CONFIG.headers['X-PARSE-Session-Token'] = user.sessionToken;
+        if (data) {
+          PARSE.CONFIG.headers['X-PARSE-Session-Token'] = data.sessionToken;
         }
       };
+
+
 
       // Add a new User
       var addUser = function (userObj) {
         $http.post(PARSE.URL + 'users', userObj, PARSE.CONFIG)
-          .then( function (res) {
+          .then( function (res) { 
             console.log(res);
           }
         );
@@ -33,21 +36,24 @@
       // Log in a User
       var loginUser = function (userObj) {
 
-        $http({
+        $http ({
           method: 'GET',
           url: PARSE.URL + 'login',
           headers: PARSE.CONFIG.headers,
           params: userObj
-        }).then (function (res) {
+        }).success (function (res) {
           console.log(res);
-          $cookieStore.put('currentUser', res.data);
+          // $cookies.get('sessionToken', res.data);
+          currentUser(res);
+
         });
         
       };
 
       // Logout Method
       var logoutUser = function () {
-        $cookieStore.remove('currentUser');
+        $cookies.remove('sessionToken');
+        $cookies.remove('userObjectId');
         $location.path('/login');
       }
   
