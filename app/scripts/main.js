@@ -12,8 +12,10 @@
                     'X-Parse-REST-API-Key': 'jVsXe2jpAWWcNOUP6oiND5U4o1fbbdGggI2W8zKd',
                     'Content-Type': 'application/json'
                 }
+
             }
         })
+        
 		.config( function ($stateProvider, $urlRouterProvider) {
 
 		$urlRouterProvider.otherwise('/');

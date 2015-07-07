@@ -8,11 +8,7 @@
 
     function ($scope, UserFactory, $location) {
 
-      // var usersa = UserFactory.user();
-      // if (user) {
-      //   return $location.path('/');
-      // }
-
+     
       // Add a new user
       $scope.registerUser = function (userObj) {
         UserFactory.register(userObj);

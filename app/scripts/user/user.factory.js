@@ -2,7 +2,7 @@
   
   'use strict';
 
-  angular.module('UserModule', [])
+  angular.module('UserModule', ['ngMessages'])
 
   .factory('UserFactory', ['$http', 'PARSE', '$cookies', '$location',
 
@@ -43,7 +43,6 @@
           params: userObj
         }).success (function (res) {
           console.log(res);
-          // $cookies.get('sessionToken', res.data);
           currentUser(res);
 
         });
