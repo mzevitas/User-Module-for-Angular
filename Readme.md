@@ -1,5 +1,5 @@
-## Readme
+##Read Me
 
-You should probably update this file.
-
-> This app was generated with the [Yeoman TIY Generator](https://github.com/twhitacre/generator-tiy-webapp)
+npm install
+bower install
+gulp watch

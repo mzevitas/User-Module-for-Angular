@@ -54,7 +54,7 @@
         $cookies.remove('sessionToken');
         $cookies.remove('userObjectId');
         $location.path('/login');
-      }
+      } 
   
       return {
         register : addUser, 
