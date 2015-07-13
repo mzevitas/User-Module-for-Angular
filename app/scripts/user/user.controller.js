@@ -4,9 +4,9 @@
 
   angular.module('UserModule')
 
-  .controller('UserCtrl', ['$scope', 'UserFactory', '$location', 
+  .controller('UserCtrl', ['$scope', 'UserFactory', '$state', 
 
-    function ($scope, UserFactory, $location) {
+    function ($scope, UserFactory, $state) {
 
      
       // Add a new user
@@ -31,17 +31,17 @@
           });
         }
       }
-    });
+    })
 
-   // .directive('logIn', [ function () {
-   //   return {
-   //     restrict: 'EA',
+   .directive('logIn', [ function () {
+     return {
+       restrict: 'EA',
 
-   //     templateUrl: 'scripts/user/login.tpl.html' 
+       templateUrl: 'scripts/user/login.tpl.html' 
 
-   //       };
+         };
 
-   // }]);
+   }]);
    
 
 

@@ -4,9 +4,9 @@
 
   angular.module('UserModule', ['ngMessages'])
 
-  .factory('UserFactory', ['$http', 'PARSE', '$cookies', '$location',
+  .factory('UserFactory', ['$http', 'PARSE', '$cookies', '$state',
 
-    function ($http, PARSE, $cookies, $location) {
+    function ($http, PARSE, $cookies, $state) {
     
       // Get Current User
       var currentUser = function (data) {
@@ -29,6 +29,7 @@
         $http.post(PARSE.URL + 'users', userObj, PARSE.CONFIG)
           .then( function (res) { 
             console.log(res);
+
           }
         );
       };
@@ -53,7 +54,7 @@
       var logoutUser = function () {
         $cookies.remove('sessionToken');
         $cookies.remove('userObjectId');
-        $location.path('/login');
+        $state.go('login');
       } 
   
       return {
